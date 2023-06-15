@@ -1,0 +1,21 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    <title>Products list</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Products</h1>
+    {% if products %}
+        {% for product in products %}
+            <div>
+                <p>Name: {{ product.name }}</p>
+                <p>Price: {{ product.price }}</p>
+                <P>Discount: {% firstof product.discount 'No' %}</P>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>No products yet</h3>
+    {% endif %}
+    <a href="http://127.0.0.1:8000/shop/"><- На главную</a>
+{% endblock %}

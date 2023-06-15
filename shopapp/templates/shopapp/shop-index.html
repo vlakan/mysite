@@ -1,0 +1,37 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  <title>Shop index</title>
+{% endblock%}
+
+
+{% block body %}
+  <h1>Hello Shop index</h1>
+  <div>
+    <ul>
+      {% for name, price in products %}
+        <li>{{ name }} for ${{ price }}</li>
+        {% if name|length_is:'7' %}
+          <span>Lucky product</span>
+        {% endif %}
+      {% empty %}
+        No products here
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {{ digits|join:" - " }}
+  </div>
+  <div>
+    Time running: {{ time_running }}
+  </div>
+  <div>
+    {% lorem 3 p random %}
+  </div>
+  <div>
+    <a href="http://127.0.0.1:8000/shop/products/">Список продуктов</a>
+  </div>
+  <div>
+    <a href="http://127.0.0.1:8000/shop/orders/">Список заказов</a>
+  </div>
+{% endblock %}
